@@ -1,1 +1,22 @@
-<p>countries works!</p>
+<h1>{{myCountries}}</h1>
+
+<ul>
+   <li *ngFor="let country of countries_tab">
+      {{country.name}}: {{country.area}} km<sup>2</sup>
+   </li>
+</ul>
+
+<h1>Countries Greater than 500 000</h1>
+<ul>
+   <li *ngFor="let country of countries_tab">
+      <div>
+         <span *ngIf="country.area>500000; then condition1 else condition2"></span>
+         <ng-template #condition1>
+            {{country.name}}:{{country.area}} km<sup>2</sup> large
+         </ng-template>
+         <ng-template #condition2>
+            {{country.name}}:{{country.area}} km<sup>2</sup> small
+         </ng-template>
+      </div>
+   </li>
+</ul>
